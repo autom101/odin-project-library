@@ -21,3 +21,7 @@ function addBookToLibrary() {
 
   myLibrary.push(book);
 }
+
+// To-do List:
+// Create functions to display books in myLibrary array
+// Create simple UI to let user input books that isn't prompt
