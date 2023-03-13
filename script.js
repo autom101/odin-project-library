@@ -1,36 +1,29 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, readingStatus) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.readingStatus = readingStatus;
 }
 
-Book.prototype.info = function () {
-  let information =
-    this.title +
-    " by " +
-    this.author +
-    ", " +
-    this.pages +
-    " pages" +
-    ", " +
-    this.read +
-    ".";
-  return information;
-};
-
 function displayNewBook(book) {
-  bookContainer = document.createElement("div");
+  newBook = document.createElement("div");
+  newBook.append("Title: " + book.title + "\n");
+  newBook.append("Author: " + book.author + "\n");
+  newBook.append("Number of Pages: " + book.pages + "\n");
+  newBook.append("Reading Status: " + book.readingStatus);
+
+  newBook.classList.add("book");
+  bookContainer.appendChild(newBook);
 }
 
 function addBookToLibrary() {
   let book = new Book(
     prompt("What is the title of the book?", "Unknown Name"),
     prompt("Who is the author of the book?", "Unknown Author"),
-    prompt("How many pages are in the book?", "unknown"),
-    prompt("Have you read this book?", "which I have not read yet")
+    prompt("How many pages are in the book?", "Unknown"),
+    prompt("Have you read this book?", "Unread")
   );
 
   // Store location of book inside the myLibrary array inside the book object itself
@@ -50,6 +43,7 @@ function addBookToLibrary() {
 // Create simple UI to let user input books that isn't prompt
 
 btn = document.querySelector(".btn");
+bookContainer = document.querySelector(".book-container");
 
 btn.addEventListener(
   "click",
