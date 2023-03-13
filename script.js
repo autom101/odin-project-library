@@ -1,4 +1,5 @@
 let myLibrary = [];
+let bookInDom = [];
 
 function Book(title, author, pages, readingStatus) {
   this.title = title;
@@ -7,15 +8,25 @@ function Book(title, author, pages, readingStatus) {
   this.readingStatus = readingStatus;
 }
 
-function displayNewBook(book) {
-  newBook = document.createElement("div");
-  newBook.append("Title: " + book.title + "\n");
-  newBook.append("Author: " + book.author + "\n");
-  newBook.append("Number of Pages: " + book.pages + "\n");
-  newBook.append("Reading Status: " + book.readingStatus);
+Book.prototype.toggleReadingStatus = function (userInputReadingStatus) {
+  this.readingStatus = userInputReadingStatus;
+};
 
-  newBook.classList.add("book");
-  bookContainer.appendChild(newBook);
+function removeBookFromLibrary(book) {
+  let index = book.locationInLibrary;
+  bookContainer.removeChild(bookInDom[index]);
+}
+
+function displayNewBook(book) {
+  let index = book.locationInLibrary;
+  bookInDom[index] = document.createElement("div");
+  bookInDom[index].append("Title: " + book.title + "\n");
+  bookInDom[index].append("Author: " + book.author + "\n");
+  bookInDom[index].append("Number of Pages: " + book.pages + "\n");
+  bookInDom[index].append("Reading Status: " + book.readingStatus);
+
+  bookInDom[index].classList.add("book");
+  bookContainer.appendChild(bookInDom[index]);
 }
 
 function addBookToLibrary() {
@@ -27,20 +38,12 @@ function addBookToLibrary() {
   );
 
   // Store location of book inside the myLibrary array inside the book object itself
-  if (myLibrary.length == 0) {
-    book.locationInLibrary = 0;
-  } else {
-    // As we have no pushed the book object to myLibrary yet, the book's location is going to by myLibrary.length
-    book.locationInLibrary = myLibrary.length;
-  }
+  // As we have not pushed the book object to myLibrary yet, the book's location is going to by myLibrary.length
+  book.locationInLibrary = myLibrary.length;
 
   myLibrary.push(book);
   displayNewBook(book);
 }
-
-// To-do List:
-// Create functions to display books in myLibrary array
-// Create simple UI to let user input books that isn't prompt
 
 btn = document.querySelector(".btn");
 bookContainer = document.querySelector(".book-container");
