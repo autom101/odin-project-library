@@ -34,9 +34,9 @@ function displayNewBook(book) {
     bookInDom[index][i] = document.createElement("p");
   }
 
-  bookInDom[index][0].append("Title: " + book.title + "\n");
-  bookInDom[index][1].append("Author: " + book.author + "\n");
-  bookInDom[index][2].append("Number of Pages: " + book.pages + "\n");
+  bookInDom[index][0].append("Title: " + book.title);
+  bookInDom[index][1].append("Author: " + book.author);
+  bookInDom[index][2].append("Number of Pages: " + book.pages);
   bookInDom[index][3].append("Reading Status: " + book.readingStatus);
 
   bookInDom[index].classList.add("book");
