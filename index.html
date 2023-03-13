@@ -15,6 +15,29 @@
         <header>
             <h1>Library App</h1>
         </header>
+
+        <form action="#" method="POST">
+
+            <button class="clear-btn" type="reset">
+                <img src="./images/close.svg" alt="Close button">
+            </button>
+
+            <label for="book-title">Title:</label>
+            <input id="book-title" name="book-title" type="text" required>
+
+            <label for="book-author">Text:</label>
+            <input id="book-author" name="book-title" type="text" required>
+
+            <label for="book-pages">Number of Pages:</label>
+            <input id="book-pages" name="book-title" type="number" title="Please enter a number" required>
+
+            <label for="book-readingStatus">Reading Status:</label>
+            <input id="book-readingStatus" name="book-readingStatus" type="text" title="Please enter Read/Unread"
+                required>
+
+            <button class="btn" type="submit">SUBMIT</button>
+        </form>
+
         <main>
             <button class="btn">
                 New

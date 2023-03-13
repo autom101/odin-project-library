@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body,
 header {
   padding: 0;
@@ -39,6 +43,96 @@ main {
   height: 3rem;
 }
 
+form {
+  position: absolute;
+  top: 25%;
+
+  height: 55%;
+  width: 40%;
+  align-self: center;
+
+  background-color: lightgoldenrodyellow;
+
+  border: 1px solid #dec0ba;
+  border-radius: 6px;
+  box-sizing: border-box;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+
+  display: grid;
+  grid-template: repeat(6, 1fr) / 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.clear-btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  justify-self: end;
+  grid-column-start: 2;
+}
+
+img {
+  height: 2rem;
+  width: 2rem;
+}
+
+label {
+  justify-self: center;
+  opacity: 0.6;
+  font-size: 20px;
+  margin-bottom: 7px;
+}
+
+input {
+  justify-self: start;
+
+  height: 40px;
+
+  border: 1px solid #dec0ba;
+  border-radius: 6px;
+  box-sizing: border-box;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+
+  outline: none;
+  margin-left: auto;
+}
+
+input:focus:invalid {
+  border: 1px solid red;
+  font-size: 24px;
+}
+
+input:focus:valid {
+  border: 1px solid blue;
+  font-size: 24px;
+}
+
+.btn[type="submit"] {
+  grid-column: 1 / 3;
+
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  color: snow;
+
+  width: 200px;
+  height: 50px;
+
+  background-color: rgb(218, 108, 136);
+
+  border: 1px solid #ce96a6;
+  border-radius: 7px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+}
+
+button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  scale: 1.02;
+}
+
 .book-container {
   width: 100%;
   display: grid;
@@ -58,4 +152,8 @@ main {
 
   border-radius: 8px;
   padding: 0 1rem;
+}
+
+form.form-hide {
+  display: none;
 }
