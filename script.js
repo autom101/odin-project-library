@@ -48,13 +48,8 @@ function displayNewBook(book) {
 }
 
 //Create new book object, and place it into myLibrary array
-function addBookToLibrary() {
-  let book = new Book(
-    prompt("What is the title of the book?", "Unknown Name"),
-    prompt("Who is the author of the book?", "Unknown Author"),
-    prompt("How many pages are in the book?", "Unknown"),
-    prompt("Have you read this book?", "Unread")
-  );
+function addBookToLibrary(title, author, pages, readingStatus) {
+  let book = new Book(title, author, pages, readingStatus);
 
   // Store location of book inside the myLibrary array inside the book object itself
   // As we have not pushed the book object to myLibrary yet, the book's location is going to by myLibrary.length
@@ -64,13 +59,39 @@ function addBookToLibrary() {
   displayNewBook(book);
 }
 
-btn = document.querySelector(".btn");
+function readFormData() {
+  let formData = new FormData(form);
+
+  let title = formData.get("book-title");
+  let author = formData.get("book-author");
+  let pages = formData.get("book-pages");
+  let readingStatus = formData.get("book-readingStatus");
+
+  addBookToLibrary(title, author, pages, readingStatus);
+}
+
+newBook = document.querySelector(".newBook");
+form = document.querySelector("form");
+closeImage = document.querySelector(".close-icon");
 bookContainer = document.querySelector(".book-container");
 
-btn.addEventListener(
+newBook.addEventListener(
   "click",
   () => {
-    addBookToLibrary();
+    form.classList.toggle("hide-form");
   },
   false
 );
+
+form.addEventListener("reset", (e) => {
+  // the preventDefault method stops the form from submitting to a server
+  e.preventDefault();
+  form.classList.toggle("hide-form");
+});
+
+form.addEventListener("submit", (e) => {
+  //do something
+  e.preventDefault();
+  readFormData();
+  form.classList.toggle("hide-form");
+});

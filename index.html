@@ -19,17 +19,18 @@
         <form action="#" method="POST">
 
             <button class="clear-btn" type="reset">
-                <img src="./images/close.svg" alt="Close button">
+                <img class="close-icon" src="./images/close.svg" alt="Close button">
             </button>
 
             <label for="book-title">Title:</label>
-            <input id="book-title" name="book-title" type="text" required>
+            <input id="book-title" name="book-title" type="text" minlength="1" maaxlength="256" required>
 
             <label for="book-author">Text:</label>
-            <input id="book-author" name="book-title" type="text" required>
+            <input id="book-author" name="book-author" type="text" minlength="1" maaxlength="256" required>
 
             <label for="book-pages">Number of Pages:</label>
-            <input id="book-pages" name="book-title" type="number" title="Please enter a number" required>
+            <input id="book-pages" name="book-pages" type="number" title="Please enter a number" min="0" max="9999"
+                required>
 
             <label for="book-readingStatus">Reading Status:</label>
             <input id="book-readingStatus" name="book-readingStatus" type="text" title="Please enter Read/Unread"
@@ -39,7 +40,7 @@
         </form>
 
         <main>
-            <button class="btn">
+            <button class="newBook btn">
                 New
             </button>
 
