@@ -12,23 +12,42 @@ Book.prototype.toggleReadingStatus = function (userInputReadingStatus) {
   this.readingStatus = userInputReadingStatus;
 };
 
+// Remove provided book from dom, and also remove it from the library
 function removeBookFromLibrary(book) {
   let index = book.locationInLibrary;
   bookContainer.removeChild(bookInDom[index]);
+
+  bookContainer.splice(index, 1);
+  myLibrary.splice(index, 1);
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (i >= index) {
+      myLibrary[i].locationInLibrary = locationInLibrary - 1;
+    }
+  }
 }
 
+// Create a div to hold new book inside bookInDom array and place it on dom
 function displayNewBook(book) {
   let index = book.locationInLibrary;
   bookInDom[index] = document.createElement("div");
-  bookInDom[index].append("Title: " + book.title + "\n");
-  bookInDom[index].append("Author: " + book.author + "\n");
-  bookInDom[index].append("Number of Pages: " + book.pages + "\n");
-  bookInDom[index].append("Reading Status: " + book.readingStatus);
+  for (let i = 0; i < 4; i++) {
+    bookInDom[index][i] = document.createElement("p");
+  }
+
+  bookInDom[index][0].append("Title: " + book.title + "\n");
+  bookInDom[index][1].append("Author: " + book.author + "\n");
+  bookInDom[index][2].append("Number of Pages: " + book.pages + "\n");
+  bookInDom[index][3].append("Reading Status: " + book.readingStatus);
 
   bookInDom[index].classList.add("book");
   bookContainer.appendChild(bookInDom[index]);
+
+  for (let i = 0; i < 4; i++) {
+    bookInDom[index].appendChild(bookInDom[index][i]);
+  }
 }
 
+//Create new book object, and place it into myLibrary array
 function addBookToLibrary() {
   let book = new Book(
     prompt("What is the title of the book?", "Unknown Name"),
